@@ -1,2 +1,0 @@
-# website
-React Personal Website
