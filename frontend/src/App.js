@@ -1,6 +1,7 @@
 import { unstable_HistoryRouter as HistoryRouter, Routes, Route } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { history } from './utils/history'
+import  NeedAuth from './components/NeedAuth'
 
 // import './App.css'
 // import { AuthComponent } from '@/components/AuthComponent'
@@ -22,6 +23,8 @@ const Layout = lazy(() => import('./pages/Layout'))
 const Home = lazy(() => import('./pages/Home'))
 const Articles = lazy(() => import('./pages/Articles'))
 const Connect = lazy(() => import('./pages/Connect'))
+const ContentManagePage = lazy(() => import('./pages/ContentManagePage'))
+const AuthPage = lazy(() => import('./pages/AuthPage'))
 
 function App () {
   return (
@@ -43,6 +46,12 @@ function App () {
               <Route path='/' element={<Home />}></Route>
               <Route path='articles' element={<Articles />}></Route>
               {/* <Route path='about' element={<About />}></Route>  */}
+              <Route path={"auth-form"} element={<AuthPage/>}/>
+              <Route path='content-manage' element={
+                <NeedAuth>
+                  <ContentManagePage />
+                </NeedAuth>
+              }></Route> 
               <Route path='connect-us' element={<Connect />}></Route> 
             </Route>
 

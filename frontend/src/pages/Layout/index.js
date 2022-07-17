@@ -21,10 +21,11 @@ export default function Layout(){
           <button onClick={ClickHandle}> <IoIosLeaf />  </button>
           <div className="flex space-x-4 text-lg mt-3 justify-between ml-20"> <FaCat /> <GiCat /> <GiHollowCat /> <IoLogoOctocat /> </div>
         </div>
-        
+
         <ul className="repo-nav border-b flex items-center pt-2 space-x-4 font-serif">
           <li> <Link className="hover:border-b-4 hover:border-b-gray-250" to="/"> Mainpage </Link> </li>
           <li> <Link className="hover:border-b-4 hover:border-b-gray-250" to="/articles"> Articles </Link> </li>
+          <li> <Link className="hover:border-b-4 hover:border-b-gray-250" to="/content-manage"> Manage </Link> </li>
           {/* <li> <Link className="hover:border-b-4 hover:border-b-gray-250" to="/about"> About </Link> </li> */}
           <li> <Link className="hover:border-b-4 hover:border-b-gray-250" to="/connect-us"> Connect </Link> </li>
         </ul>
