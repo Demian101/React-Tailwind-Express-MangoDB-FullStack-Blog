@@ -1,13 +1,17 @@
+import ArticlePreviewList from "@/components/ArticlePreviewList"
+// import ArticlePreview from "@/components/ArticlePreview"
+
 // import ReactMarkdown from 'react-markdown'
 // import remarkGfm from 'remark-gfm'
 // import ExampleComponent from '../../components/ExampleComponent'
-
-import Acticle from '../../components/Article';
-import { http } from '../../utils'
-import { useEffect } from 'react'
+// import Acticle from '../../components/Article';
+// import { http } from '../../utils'
+// import { useEffect } from 'react'
 /* Markdown 渲染条件: 
 1. 必须空首行 
 2. 左侧缩进不能太多 */
+
+/*
 const defaultMd = `
 
   * [x] azeazea
@@ -30,3 +34,14 @@ export default function Article() {
     <Acticle content={defaultMd} />
   )
 }
+*/
+
+function ArticlesPage() { 
+  return (
+    <div>
+      <ArticlePreviewList />
+      {/* <ArticlePreview /> */}
+    </div>
+  )
+}
+export default ArticlesPage;

@@ -19,10 +19,11 @@ export const authApi = createApi({
 
             login:build.mutation({  // 登录
                 query(user) {
+                    // console.log("user", user); //  {username: 'soda', password: '...'}
                     return {
                         url:'/auth/signin',
                         method:'post',
-                        body:user   // identifier 
+                        body: user  // JSON.parse({"username": "soda", "password": "Soda!543"})
                     }
                 }
             }),

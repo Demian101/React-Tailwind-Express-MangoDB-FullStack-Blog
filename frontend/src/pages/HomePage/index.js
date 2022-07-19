@@ -1,20 +1,19 @@
-import {useState} from 'react'
+// import {useState} from 'react'
 import { AiOutlineSwap } from "react-icons/ai";
 import { FaCat } from "react-icons/fa";
 import { GiCat, GiHollowCat } from "react-icons/gi";
-import { IoLogoOctocat, IoIosLeaf } from "react-icons/io";
+import { IoLogoOctocat } from "react-icons/io";
 // import Slider from "@/components/Slider"
-import Slider from "../../components/Slider"
+import Slider from "@/components/Slider"
 import pics from '../../data/pics';
 
-
 export default function Layout(){
-  const [isRevert,setIsRevert] = useState(false)
-  const ClickHandle = () =>{
-    setIsRevert((preValue) => !preValue)
-  }
+  // const [isRevert,setIsRevert] = useState(false)
+  // const ClickHandle = () =>{
+  //   setIsRevert((preValue) => !preValue)
+  // }
   return(
-    <div className="grid grid-flow-row grid-cols-4">
+    <div className="w-full grid grid-flow-row grid-cols-4">
       <div className="col-start-1 col-span-3 row-span-full z-0">
         <Slider data={pics}/> 
       </div>   {/* Slider End */}

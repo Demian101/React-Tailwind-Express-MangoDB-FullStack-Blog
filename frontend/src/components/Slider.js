@@ -1,7 +1,7 @@
 import React from "react";
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+// import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
-export default function Slider({ data }) {
+const Slider = ({ data }) => {
   const [value, setValue] = React.useState(0);
   //useEffect weil rerender bei jedem value und data erwünscht
   React.useEffect(() => {
@@ -115,3 +115,4 @@ export default function Slider({ data }) {
     // </div>
   );
 }
+export default Slider;

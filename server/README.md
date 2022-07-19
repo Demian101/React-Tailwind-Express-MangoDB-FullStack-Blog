@@ -1,3 +1,9 @@
+[TOC]
+
+
+
+
+
 Node.js MongoDB – User Authentication - JWT & Mongoose
 
 
@@ -16,7 +22,9 @@ node server.js
 
 ## API 使用
 
-### POST `api/auth/signup`  注册
+### Login & Signup
+
+#### POST `api/auth/signup`  注册
 
 ```
 {
@@ -39,7 +47,7 @@ Body - raw , 最右侧选择 JSON 模式
 
 
 
-### POST `api/auth/signin`  登录
+#### POST `api/auth/signin`  登录
 
 ```
 Body - raw , 最右侧选择 JSON 模式 : 
@@ -65,7 +73,7 @@ Body - raw , 最右侧选择 JSON 模式 :
 
 
 
-### GET `/api/test/user`
+#### GET `/api/test/user`
 
 看下路由怎么写的 : 
 
@@ -130,6 +138,20 @@ exports.moderatorBoard = (req, res) => {
 接口调用如下 : 
 
 <img src="http://imagesoda.oss-cn-beijing.aliyuncs.com/Sodaoo/2022-07-17-084018.png" style="zoom:50%;" />
+
+
+
+### Article Module
+
+#### `app.get("/api/articles")`
+
+
+
+#### `app.get("/api/articles/:id")`
+
+
+
+#### `app.post("/api/articles")`
 
 
 
@@ -580,11 +602,7 @@ exports.signin = (req, res) => {
 
 
 
-
-
 ## Configure 
-
-
 
 ### Db Configuration
 

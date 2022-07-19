@@ -16,27 +16,28 @@ export const authSlice = createSlice({
         return {
             isLogged: true,
             token,
-            user: JSON.parse(localStorage.getItem('user')),
+            user: localStorage.getItem('user'), //JSON.parse( localStorage.getItem('user'))
             expirationTime: +localStorage.getItem('expirationTime')
         };
-
     },
+    
     reducers: {
         login(state, action) {
+            console.log("action.payload", action.payload, action) // {token: undefined, user: undefined}
             state.isLogged = true;
             state.token = action.payload.token;
-            state.user = action.payload.user;
-            // 获取当前时间戳
-            const currentTime = Date.now();
-            // 设置登录的有效时间
-            const timeout = 1000 * 60 * 60 * 24 * 7; // 一周
+            state.username = action.payload.username;
+
+            const currentTime = Date.now();  // 获取当前时间戳
+
+            const timeout = 1000 * 60 * 60 * 24 * 7; // 设置登录的有效时间： 一周
             // const timeout = 10000 // 10s
 
             state.expirationTime = currentTime + timeout; // 设置失效日期
 
             // 将数据同时存储到本地存储中
             localStorage.setItem('token', state.token);
-            localStorage.setItem('user', JSON.stringify(state.user));
+            localStorage.setItem('username', state.username);  // JSON.stringify(state.user)
             localStorage.setItem("expirationTime", state.expirationTime + "");
         },
         logout(state, action) {

@@ -1,7 +1,7 @@
-import { unstable_HistoryRouter as HistoryRouter, Routes, Route } from 'react-router-dom'
+import {  Routes, Route } from 'react-router-dom' // unstable_HistoryRouter as HistoryRouter,
 import { lazy, Suspense } from 'react'
-import { history } from './utils/history'
-import  NeedAuth from './components/NeedAuth'
+// import { history } from './utils/history'
+import  NeedAuth from '@/components/NeedAuth'
 
 // import './App.css'
 // import { AuthComponent } from '@/components/AuthComponent'
@@ -19,17 +19,18 @@ import  NeedAuth from './components/NeedAuth'
 // const Connect = lazy(() => import('@/pages/Connect'))
 // const Publish = lazy(() => import('@/pages/Publish'))
 
-const Layout = lazy(() => import('./pages/Layout'))
-const Home = lazy(() => import('./pages/Home'))
-const Articles = lazy(() => import('./pages/Articles'))
-const Connect = lazy(() => import('./pages/Connect'))
-const ContentManagePage = lazy(() => import('./pages/ContentManagePage'))
-const AuthPage = lazy(() => import('./pages/AuthPage'))
+const LayoutPage = lazy(() => import('@/pages/LayoutPage'))
+const HomePage = lazy(() => import('@/pages/HomePage'))
+const ArticlesPage = lazy(() => import('@/pages/ArticlesPage'))
+const ConnectPage = lazy(() => import('@/pages/ConnectPage'))
+const ContentManagePage = lazy(() => import('@/pages/ContentManagePage'))
+const AuthPage = lazy(() => import('@/pages/AuthPage'))
+const ArticleDetail = lazy(() => import('@/components/ArticleDetail'))
 
-function App () {
+export default function App () {
   return (
     // 路由配置
-    <HistoryRouter history={history}>   {/* 使用 HistoryRouter 进行组件外跳转 */}
+    // <HistoryRouter history={history}>   {/* 使用 HistoryRouter 进行组件外跳转 */}
       <div className="App">
         <Suspense
           fallback={
@@ -42,25 +43,26 @@ function App () {
             {/* 创建路由path和组件对应关系 */}
             {/* Layout需要鉴权处理的 */}
             {/* 这里的Layout 一定不能写死 要根据是否登录进行判断 */}
-            <Route path='/' element={  <Layout /> }>      {/*  </AuthComponent> */}
-              <Route path='/' element={<Home />}></Route>
-              <Route path='articles' element={<Articles />}></Route>
-              {/* <Route path='about' element={<About />}></Route>  */}
-              <Route path={"auth-form"} element={<AuthPage/>}/>
+            <Route path='/' element={  <LayoutPage /> }>      {/*  </AuthComponent> */}
+              <Route path='/' element={<HomePage />}></Route>
+              <Route path='articles' > 
+                <Route path='' element={<ArticlesPage />}></Route>
+                <Route path=':articleId' element={<ArticleDetail />}> </Route>
+                {/* <Route path='about' element={<About />}></Route>  */}
+              </Route>
               <Route path='content-manage' element={
                 <NeedAuth>
                   <ContentManagePage />
                 </NeedAuth>
               }></Route> 
-              <Route path='connect-us' element={<Connect />}></Route> 
+              <Route path='connect-us' element={<ConnectPage />}></Route> 
+              <Route path='login' element={<AuthPage />}></Route> 
             </Route>
 
-            {/* <Route path='/login' element={<Login />}></Route> */}
+            {/* <Route path='/login' element={<NeedAuth />}></Route> */}
           </Routes>
         </Suspense>
       </div>
-    </HistoryRouter>
+    // </HistoryRouter>
   )
-}
-
-export default App
+};
